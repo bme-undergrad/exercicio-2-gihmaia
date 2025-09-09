@@ -18,8 +18,8 @@ jobs:
       uses: classroom-resources/autograding-command-grader@v1
       with:
         test-name: test1
-        setup-command: sudo apt update && sudo apt install octave && sudo apt install
-          octave-statistics
+        setup-command: sudo apt update && sudo apt install octave  && sudo apt install
+          octave-dev && sudo apt install octave-statistics
         command: octave --eval "pkg install -forge struct; pkg install -forge io;
           pkg install -forge optim; [blendA1, blendB1] = exercicio2(1); [blendA2,
           blendB2] = exercicio2(8); assert((abs((blendA1 + blendB1) - 66.667) < 0.1)
