@@ -1,3 +1,15 @@
+function [blendA, blendB] = exercicio2(NG)
+
+% NG: numero do grupo
+
+% nao alterar: inicio
+es = 1;
+imax = 20;
+pkg load optim
+% nao alterar: fim
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % digite seu codigo aqui
 
 % 1. Defina a função objetivo (vetor de custos)
@@ -24,9 +36,7 @@ ub = [20; 50];
 %    O output 'x' conterá as quantidades ótimas de cada blend
 [x, fval] = linprog(c, A, b, [], [], lb, ub);
 
-% As duas linhas a seguir já fazem parte do template do seu professor.
-% O código que você digitou acima deve calcular 'x'.
-% A variável 'x' é um vetor coluna, com x(1) sendo blendA e x(2) blendB.
+
 % mantenha essas duas linhas finais
 blendA = x(1);
 blendB = x(2);
