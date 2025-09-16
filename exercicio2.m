@@ -8,39 +8,27 @@ imax = 20;
 pkg load optim
 % nao alterar: fim
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%
+#função otimização:
+f=[10,4]';
 
-% digite seu codigo aqui
+#chutes iniciais:
+x=[1,1]';
 
-% 1. Defina a função objetivo (vetor de custos)
-%    O custo de Blend B depende do NG passado como argumento.
-c = [10; 2*NG];
+#restrições de desigualdade Ax<=b
+A=[-0.3,-0.2;
+  -0.2,-0.25;
+  -0.25,-0.3;
+  1,0;
+  0,1];
+b=[-15;-10;-12;20;50];
 
-% 2. Defina as restrições de desigualdade (A*x <= b)
-%    As restrições de "maior ou igual" (>=) foram multiplicadas por -1.
-A = [-0.30, -0.20;
-     -0.20, -0.25;
-     -0.25, -0.30];
+#nao tem restrições de igualdade
 
-b = [-15;
-     -10;
-     -12];
+x_min_valores=zeros(2,1);
+x_max_valores=1000*ones(2,1);
+x=linprog(f,A,b)
 
-% 3. Defina os limites (bounds) das variáveis
-%    lb = lower bounds (limite inferior, neste caso, não-negatividade)
-%    ub = upper bounds (limite superior, quantidades máximas)
-lb = [0; 0];
-ub = [20; 50];
-
-% 4. Resolva o problema usando linprog
-%    O output 'x' conterá as quantidades ótimas de cada blend
-[x, fval] = linprog(c, A, b, [], [], lb, ub);
-
-
-% mantenha essas duas linhas finais
 blendA = x(1);
 blendB = x(2);
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 endfunction
